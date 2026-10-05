@@ -323,11 +323,11 @@
     const w = WHO[r.role];
     return `
     <div class="demobar">
-      <div class="demobar__label"><i class="demobar__dot"></i><b>Maquette interactive</b><span>· données fictives · tout est cliquable</span></div>
+      <div class="demobar__label"><i class="demobar__dot"></i><b>Maquette<em> interactive</em></b><span>· données fictives · tout est cliquable</span></div>
       <div class="seg" role="tablist" aria-label="Changer d’espace">
         ${[['client', 'Client', 'accueil'], ['equipe', 'Équipe', 'projets'], ['admin', 'Admin', 'pilotage']].map(([k, t, p]) => `<button class="${r.role === k ? 'is-on' : ''}" data-go="#/${k}/${p}">${t}</button>`).join('')}
       </div>
-      <div class="demobar__right"><button class="demobar__btn" data-act="reset">${ic('reset', 14)} Réinitialiser</button></div>
+      <div class="demobar__right"><button class="demobar__btn" data-act="reset" aria-label="Réinitialiser la démo">${ic('reset', 14)}<span>Réinitialiser</span></button></div>
     </div>
     <div class="shell">
       <aside class="side">
@@ -508,7 +508,7 @@
     const list = S.orders.filter((o) => o.status !== 'validated' && (all || o.designer === ME));
     const mine = S.orders.filter((o) => o.designer === ME);
     return `<div class="page-head"><div><h1 class="h1">${all ? 'Toute l’équipe' : `Bonjour <span class="serif">Léa</span>`}</h1><p class="lead">${all ? 'Tous les projets en cours, de la commande à la validation du client.' : 'Vos projets de la semaine. Les échéances tiennent compte de la promesse faite au client.'}</p></div><div class="page-head__actions"><div class="tabs"><button class="${!all ? 'is-on' : ''}" data-go="#/equipe/projets">Mes projets</button><button class="${all ? 'is-on' : ''}" data-go="#/equipe/tous">Toute l’équipe</button></div></div></div>
-      ${!all ? `<div class="grid g-4" style="margin-bottom:16px">${[
+      ${!all ? `<div class="grid g-4 kpis" style="margin-bottom:16px">${[
         ['À livrer aujourd’hui', mine.filter((o) => ['production', 'revision'].includes(o.status)).length, 'avant 18 h'],
         ['Chez le client', mine.filter((o) => o.status === 'review').length, 'en attente de retours'],
         ['Livrés à l’heure', '96 %', 'sur 30 jours'],
@@ -584,7 +584,7 @@
     const late = S.orders.filter((o) => o.late && o.status !== 'validated');
     const active = S.orders.filter((o) => o.status !== 'validated');
     return `<div class="page-head"><div><div class="eyebrow">Semaine du 5 au 11 octobre</div><h1 class="h1" style="margin-top:6px">Pilotage</h1></div><div class="page-head__actions"><div class="tabs"><button class="is-on" data-act="noop">7 jours</button><button data-act="noop">30 jours</button><button data-act="noop">Année</button></div></div></div>
-      <div class="grid g-4">${[
+      <div class="grid g-4 kpis">${[
         ['Commandes en octobre', '38', '<span class="up">+12 %</span> vs septembre'],
         ['Chiffre d’affaires', '24 860 €', '<span class="up">+16 %</span> · objectif 33 600 €'],
         ['Délai moyen de livraison', '41 h', 'promesse : 48 h'],

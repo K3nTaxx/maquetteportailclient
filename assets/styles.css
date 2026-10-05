@@ -50,6 +50,7 @@ svg { display: block; flex: none; }
 .demobar { position: fixed; inset: 0 0 auto 0; height: var(--demo); z-index: 50; display: flex; align-items: center; gap: 16px; padding: 0 16px; background: #1d1c1a; color: #e9e6df; font-size: 13px; }
 .demobar__label { display: flex; align-items: center; gap: 8px; color: #b7b2a8; white-space: nowrap; }
 .demobar__label b { color: #fff; font-weight: 600; }
+.demobar__label em { font-style: normal; }
 .demobar__dot { width: 7px; height: 7px; border-radius: 50%; background: #7fc29b; }
 .seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 9px; background: #2e2c29; }
 .seg button { padding: 5px 12px; border-radius: 7px; color: #cfcac0; font-weight: 500; white-space: nowrap; }
@@ -367,11 +368,15 @@ svg { display: block; flex: none; }
   .viewer { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 46%; }
   .demobar__label span { display: none; }
   .demobar { gap: 10px; padding: 0 10px; }
-  .demobar__btn { display: none; }
+  .demobar__btn span { display: none; }
+  .demobar__btn { padding: 6px; }
   .panel { right: 12px; left: 12px; width: auto; }
 }
 @media (max-width: 520px) {
   .g-4 { grid-template-columns: minmax(0, 1fr); }
+  .g-4.kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .kpis .kpi__value { font-size: 22px; }
+  .demobar__label em { display: none; }
   .seg button { padding: 5px 9px; }
   .h1 { font-size: 22px; }
   .viewer__bar .tabs { display: none; }
